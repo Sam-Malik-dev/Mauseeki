@@ -1,10 +1,10 @@
-# 🎵 Mauseeki
+# Mauseeki
 
-**Mauseeki** is a full-stack music streaming application that allows users to discover, listen to, like, and save music while following their favorite artists. The project includes a **React Native mobile application**, **Node.js/Express backend**, **MongoDB database**, and a separate **admin dashboard**.
+**Mauseeki** is a full-stack music streaming application that allows users to discover, listen to, like, and save music while following their favorite artists. The project includes a React Native mobile application, Node.js/Express backend, MongoDB database, and a separate admin dashboard.
 
-## 📱 Features
+## Features
 
-### 👤 User Features
+### User Features
 
 * User registration and login
 * Secure authentication
@@ -18,9 +18,9 @@
 * Music player
 * Mini player
 * Background audio playback
-* Like/unlike songs
+* Like and unlike songs
 * Add albums to favourites
-* Follow/unfollow artists
+* Follow and unfollow artists
 * View liked songs
 * View favourite albums
 * View followed artists
@@ -28,17 +28,17 @@
 * View album songs
 * View artist albums
 
-### 🎧 Music Player
+### Music Player
 
-* Play/pause controls
+* Play and pause controls
 * Song information
 * Cover artwork
 * Mini player
 * Background playback
 * Music continues while navigating between screens
-* Built using **Expo Audio** and React Context
+* Built using Expo Audio and React Context
 
-## 🛠️ Admin Features
+## Admin Features
 
 * Manage users
 * Manage artists
@@ -49,7 +49,7 @@
 * Delete albums
 * Search records
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```text
 Mauseeki/
@@ -71,7 +71,7 @@ Mauseeki/
     └── React Admin Dashboard
 ```
 
-## 💻 Technologies Used
+## Technologies Used
 
 ### Frontend
 
@@ -106,7 +106,7 @@ Mauseeki/
 * Cloudinary
 * MongoDB
 
-## 🗄️ Database Models
+## Database Models
 
 ### User
 
@@ -151,7 +151,7 @@ Mauseeki/
 * Release year
 * Added by
 
-## 🔌 API
+## API
 
 Base URL:
 
@@ -189,23 +189,23 @@ POST   /Addtofav/:albumId
 POST   /add-recent
 ```
 
-## ⚙️ Installation
+## Installation
 
-### 1. Clone Repository
+### Clone Repository
 
 ```bash
 git clone YOUR_REPOSITORY_URL
 cd Mauseeki
 ```
 
-## 📱 Frontend Setup
+## Frontend Setup
 
 ```bash
 cd frontend/mauseeki
 npm install
 ```
 
-Create `.env`:
+Create a `.env` file:
 
 ```env
 EXPO_PUBLIC_BACKEND_IP=YOUR_LOCAL_IP
@@ -229,14 +229,14 @@ For Android:
 npx expo start --android
 ```
 
-## 🖥️ Backend Setup
+## Backend Setup
 
 ```bash
 cd backend
 npm install
 ```
 
-Create `.env`:
+Create a `.env` file:
 
 ```env
 PORT=8080
@@ -249,19 +249,19 @@ EMAIL_USER=YOUR_EMAIL
 EMAIL_PASSWORD=YOUR_EMAIL_PASSWORD
 ```
 
-Start server:
+Start the server:
 
 ```bash
 npm start
 ```
 
-Development:
+For development:
 
 ```bash
 npm run dev
 ```
 
-## 🌐 Admin Panel
+## Admin Panel
 
 ```bash
 cd admin
@@ -269,7 +269,7 @@ npm install
 npm start
 ```
 
-## 🔐 Environment Variables
+## Environment Variables
 
 Never commit `.env` files to GitHub.
 
@@ -281,7 +281,7 @@ dist/
 build/
 ```
 
-## 📂 Main Screens
+## Main Screens
 
 * Home
 * Search
@@ -302,7 +302,7 @@ build/
 * Login
 * Signup
 
-## 🎨 UI Design
+## UI Design
 
 Mauseeki uses a dark, premium music-streaming interface.
 
@@ -314,7 +314,7 @@ Text:       #FFFFFF
 Secondary:  #A0A0A0
 ```
 
-## 🔄 Application Flow
+## Application Flow
 
 ```text
 User
@@ -332,7 +332,7 @@ MongoDB       Cloudinary
 Database      Audio/Images
 ```
 
-## 🔒 Authentication
+## Authentication
 
 ```text
 User
@@ -353,7 +353,7 @@ AsyncStorage
 Authenticated API Requests
 ```
 
-## ☁️ Cloudinary
+## Cloudinary
 
 Cloudinary is used to store:
 
@@ -365,7 +365,7 @@ Cloudinary is used to store:
 
 MongoDB stores the media URLs instead of the actual media files.
 
-## 📸 Screenshots
+## Screenshots
 
 Add your screenshots here:
 
@@ -382,20 +382,17 @@ screenshots/
 ```
 
 Example:
+
+```markdown
 ![Home Screen](screenshots/home.png)
 ![Music Player](screenshots/player.png)
 ![Profile](screenshots/profile.png)
-Future Improvements
-* Playlist creation
-* Better music discovery
-* Advanced search and filtering
-* Artist analytics
-* Listening statistics
-* Improved audio controls
-* Social features
-* Offline music support
-Project Purpose
+```
+
+## Project Purpose
+
 Mauseeki was developed as a full-stack application to demonstrate:
+
 * Mobile application development
 * REST API development
 * Database management
@@ -403,9 +400,12 @@ Mauseeki was developed as a full-stack application to demonstrate:
 * Cloud media storage
 * Audio streaming
 * Admin dashboard development
-Developer
-Sameer
-Full-Stack / React Native Developer
+
+## Developer
+
+**Sameer**
+
+React Native / Full-Stack Developer
 
 ### Technologies
 
@@ -421,8 +421,8 @@ REST APIs
 JavaScript
 ```
 
-## 📄 License
+## License
 
 This project is developed for educational and portfolio purposes.
 
-⭐ **Mauseeki — Your Music, Your Mood.** 🎵
+**Mauseeki — Your Music, Your Mood.**
