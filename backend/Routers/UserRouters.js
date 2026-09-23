@@ -2,7 +2,6 @@ const express = require('express');
 const upload = require('../Utils/Utils');
 const { signup, login, currentUser, signout, updateProfile } = require('../Controllers/UserController');
 const authmiddleware = require('../Middelwares/Authmiddleware');
-const userValidation = require('../Middelwares/UserValidations');
 const Userrouter = express.Router();
 Userrouter.post(
     "/sign-up",

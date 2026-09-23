@@ -23,7 +23,6 @@ const HomeScreen = () => {
   const [songs, setSongs] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [recent, setRecent] = useState([]);
-  const [liked, setLiked] = useState({});
   const [loading, setLoading] = useState(true);
 
   const API = `http://${process.env.EXPO_PUBLIC_BACKEND_IP}:8080/Mauseeki`;
@@ -134,13 +133,6 @@ const HomeScreen = () => {
     });
   };
 
-  const likeSong = (id) => {
-    setLiked((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
-
   const Header = ({ title, route }) => (
     <View style={styles.header}>
       <Text style={styles.heading}>{title}</Text>
@@ -200,25 +192,6 @@ const HomeScreen = () => {
                 'Unknown Artist'}
             </Text>
           </View>
-
-          <TouchableOpacity
-            onPress={() => likeSong(item._id)}
-            hitSlop={10}
-          >
-            <Ionicons
-              name={
-                liked[item._id]
-                  ? 'heart'
-                  : 'heart-outline'
-              }
-              size={22}
-              color={
-                liked[item._id]
-                  ? '#E50914'
-                  : '#777'
-              }
-            />
-          </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => playSong(item)}

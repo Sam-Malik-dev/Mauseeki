@@ -59,7 +59,7 @@ function Sidebar() {
                 <nav className="sidebar-menu">
 
                     <Link
-                        to="/admin"
+                        to="/"
                         className="sidebar-link"
                         onClick={closeMenu}
                     >
