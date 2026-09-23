@@ -31,10 +31,10 @@ function Dashboard() {
                     albumsRes,
                     artistsRes
                 ] = await Promise.all([
-                    fetch("http://localhost:8080/Mauseeki/total-Users"),
-                    fetch("http://localhost:8080/Mauseeki/total-songs"),
-                    fetch("http://localhost:8080/Mauseeki/total-albums"),
-                    fetch("http://localhost:8080/Mauseeki/total-artists")
+                    fetch("https://mauseeki.onrender.com/Mauseeki/total-Users"),
+                    fetch("https://mauseeki.onrender.com/Mauseeki/total-songs"),
+                    fetch("https://mauseeki.onrender.com/Mauseeki/total-albums"),
+                    fetch("https://mauseeki.onrender.com/Mauseeki/total-artists")
                 ]);
 
                 setUsers(await usersRes.json());
@@ -57,10 +57,10 @@ function Dashboard() {
                     albumsRes,
                     artistsRes
                 ] = await Promise.all([
-                    fetch("http://localhost:8080/Mauseeki/recent-users"),
-                    fetch("http://localhost:8080/Mauseeki/recent-songs"),
-                    fetch("http://localhost:8080/Mauseeki/recent-albums"),
-                    fetch("http://localhost:8080/Mauseeki/recent-artists")
+                    fetch("https://mauseeki.onrender.com/Mauseeki/recent-users"),
+                    fetch("https://mauseeki.onrender.com/Mauseeki/recent-songs"),
+                    fetch("https://mauseeki.onrender.com/Mauseeki/recent-albums"),
+                    fetch("https://mauseeki.onrender.com/Mauseeki/recent-artists")
                 ]);
 
                 if (usersRes.ok) {

@@ -25,7 +25,7 @@ function Login() {
             setLoading(true);
 
             const res = await fetch(
-                "http://localhost:8080/Mauseeki/admin-login",
+                "https://mauseeki.onrender.com/Mauseeki/admin-login",
                 {
                     method: "POST",
                     headers: {

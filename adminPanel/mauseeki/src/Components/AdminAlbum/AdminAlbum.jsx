@@ -14,7 +14,7 @@ function AdminAlbum() {
                 setError("");
 
                 const url =
-                    "http://localhost:8080/Mauseeki/all-album";
+                    "https://mauseeki.onrender.com/Mauseeki/all-album";
 
                 const res = await fetch(url);
                 const data = await res.json();
@@ -46,7 +46,7 @@ function AdminAlbum() {
 
         try {
             const res = await fetch(
-                `http://localhost:8080/Mauseeki/delete-album/${id}`,
+                `https://mauseeki.onrender.com/Mauseeki/delete-album/${id}`,
                 {
                     method: "DELETE",
                 }

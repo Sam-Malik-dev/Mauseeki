@@ -15,7 +15,7 @@ function Songs() {
                 setLoading(true);
 
                 const res = await fetch(
-                    "http://localhost:8080/Mauseeki/all-songs"
+                    "https://mauseeki.onrender.com/Mauseeki/all-songs"
                 );
 
                 const data = await res.json();
@@ -49,7 +49,7 @@ function Songs() {
             setDeletingId(songId);
 
             const res = await fetch(
-                `http://localhost:8080/Mauseeki/delete-song/${songId}`,
+                `https://mauseeki.onrender.com/Mauseeki/delete-song/${songId}`,
                 {
                     method: "DELETE",
                 }

@@ -14,7 +14,7 @@ function AdminUsers() {
                 setError("");
 
                 const url =
-                    "http://localhost:8080/Mauseeki/allusers";
+                    "https://mauseeki.onrender.com/Mauseeki/allusers";
 
                 const res = await fetch(url);
                 const data = await res.json();
@@ -46,7 +46,7 @@ function AdminUsers() {
 
         try {
             const res = await fetch(
-                `http://localhost:8080/Mauseeki/delete-user/${id}`,
+                `https://mauseeki.onrender.com/Mauseeki/delete-user/${id}`,
                 {
                     method: "DELETE",
                 }

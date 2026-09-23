@@ -14,7 +14,7 @@ function AdminArtists() {
                 setError("");
 
                 const url =
-                    "http://localhost:8080/Mauseeki/all-artist";
+                    "https://mauseeki.onrender.com/Mauseeki/all-artist";
 
                 const res = await fetch(url);
                 const data = await res.json();
@@ -46,7 +46,7 @@ function AdminArtists() {
 
         try {
             const res = await fetch(
-                `http://localhost:8080/Mauseeki/delete-artist/${id}`,
+                `https://mauseeki.onrender.com/Mauseeki/delete-artist/${id}`,
                 {
                     method: "DELETE",
                 }

@@ -14,7 +14,7 @@ function Messages() {
                 setError("");
 
                 const url =
-                    "http://localhost:8080/Mauseeki/messages";
+                    "https://mauseeki.onrender.com/Mauseeki/messages";
 
                 const res = await fetch(url);
                 const data = await res.json();
@@ -46,7 +46,7 @@ function Messages() {
 
         try {
             const res = await fetch(
-                `http://localhost:8080/Mauseeki/delete-message/${id}`,
+                `https://mauseeki.onrender.com/Mauseeki/delete-message/${id}`,
                 {
                     method: "DELETE",
                 }
