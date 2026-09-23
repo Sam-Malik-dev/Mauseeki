@@ -1,0 +1,370 @@
+.users-page {
+    min-height: 100vh;
+    padding: 25px;
+    box-sizing: border-box;
+    background: #080808;
+    color: #ffffff;
+}
+
+/* HEADER */
+
+.users-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.users-label {
+    margin: 0 0 5px;
+    color: #ff2d2d;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.users-header h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.users-subtitle {
+    margin: 5px 0 0;
+    color: #a0a0a0;
+    font-size: 13px;
+}
+
+/* COUNT */
+
+.user-count {
+    min-width: 100px;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    background: #151515;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.user-count span {
+    display: block;
+    color: #ff2d2d;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.user-count p {
+    margin: 2px 0 0;
+    color: #a0a0a0;
+    font-size: 11px;
+}
+
+/* TOOLBAR */
+
+.users-toolbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+/* SEARCH */
+
+.user-search {
+    width: 350px;
+    max-width: 100%;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 13px;
+    box-sizing: border-box;
+    background: #151515;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 9px;
+    transition: all 0.25s ease;
+}
+
+.user-search:focus-within {
+    border-color: #ff2d2d;
+    box-shadow: 0 0 0 3px rgba(255, 45, 45, 0.08);
+}
+
+.user-search span {
+    flex-shrink: 0;
+    color: #ff2d2d;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.user-search input {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.user-search input::placeholder {
+    color: #666666;
+}
+
+.user-result-count {
+    margin: 0;
+    color: #a0a0a0;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* TABLE */
+
+.users-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background: #151515;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.users-table th {
+    padding: 14px 16px;
+    text-align: left;
+    color: #777777;
+    background: #101010;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.users-table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.users-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.users-table tbody tr:hover {
+    background: #1b1b1b;
+}
+
+.users-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* NUMBER */
+
+.user-number {
+    width: 50px;
+    color: #666666 !important;
+    font-size: 12px !important;
+}
+
+/* USER */
+
+.user-main {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.user-image {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-info h3 {
+    margin: 0 0 3px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.user-info span {
+    color: #666666;
+    font-size: 10px;
+}
+
+/* EMAIL */
+
+.user-email {
+    color: #a0a0a0 !important;
+}
+
+/* ROLE */
+
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 55px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: rgba(255, 45, 45, 0.08);
+    border: 1px solid rgba(255, 45, 45, 0.2);
+    color: #ff2d2d;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* DELETE */
+
+.delete-user-button {
+    width: 75px;
+    height: 32px;
+    border: 1px solid rgba(255, 45, 45, 0.25);
+    border-radius: 7px;
+    background: rgba(255, 45, 45, 0.08);
+    color: #ff2d2d;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-user-button:hover {
+    background: #ff2d2d;
+    color: #ffffff;
+    border-color: #ff2d2d;
+}
+
+.delete-user-button:active {
+    transform: scale(0.97);
+}
+
+/* MESSAGES */
+
+.users-message {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #a0a0a0;
+}
+
+.users-message h3 {
+    margin: 10px 0 3px;
+    color: #ffffff;
+}
+
+.users-message p {
+    margin: 0;
+    color: #777777;
+}
+
+.user-message-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 45, 45, 0.08);
+    color: #ff2d2d;
+    font-size: 22px;
+}
+
+.user-error h3 {
+    color: #ff2d2d;
+}
+
+/* LOADER */
+
+.user-loader {
+    width: 34px;
+    height: 34px;
+    border: 3px solid rgba(255, 255, 255, 0.08);
+    border-top-color: #ff2d2d;
+    border-radius: 50%;
+    animation: userSpin 0.8s linear infinite;
+}
+
+@keyframes userSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .users-page {
+        padding: 20px;
+    }
+
+    .users-header h1 {
+        font-size: 28px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .users-page {
+        padding: 15px;
+    }
+
+    .users-header {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .users-header h1 {
+        font-size: 25px;
+    }
+
+    .user-count {
+        width: 100%;
+    }
+
+    .users-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .user-search {
+        width: 100%;
+    }
+
+    .users-table-wrapper {
+        border-radius: 11px;
+    }
+
+    .users-table th {
+        padding: 12px;
+    }
+
+    .users-table td {
+        padding: 11px 12px;
+    }
+}

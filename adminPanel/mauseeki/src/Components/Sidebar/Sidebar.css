@@ -1,0 +1,459 @@
+/* =========================
+   COLOR VARIABLES
+========================= */
+
+:root {
+    --sidebar-bg: #080808;
+    --card-bg: #151515;
+
+    --primary: #FF2D2D;
+    --primary-soft: rgba(255, 45, 45, 0.10);
+    --primary-border: rgba(255, 45, 45, 0.25);
+
+    --white: #FFFFFF;
+    --secondary: #A0A0A0;
+
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px 16px;
+
+    box-sizing: border-box;
+
+    background: var(--sidebar-bg);
+
+    border-right: 1px solid var(--border);
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.sidebar-logo {
+    padding: 0 12px 35px;
+}
+
+.sidebar-logo h2 {
+    margin: 0;
+
+    color: var(--white);
+
+    font-size: 25px;
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+.sidebar-logo h2::first-letter {
+    color: var(--primary);
+}
+
+.sidebar-logo span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--secondary);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.sidebar-link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 13px 14px;
+
+    color: var(--secondary);
+
+    text-decoration: none;
+
+    border-radius: 11px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.sidebar-link svg {
+    min-width: 18px;
+
+    font-size: 17px;
+
+    transition: 0.25s ease;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.sidebar-link:hover {
+    color: var(--white);
+
+    background: rgba(255, 255, 255, 0.04);
+
+    transform: translateX(3px);
+}
+
+.sidebar-link:hover svg {
+    color: var(--primary);
+}
+
+
+/* =========================
+   ACTIVE
+========================= */
+
+.sidebar-link.active {
+    color: var(--white);
+
+    background: var(--primary-soft);
+
+    border: 1px solid var(--primary-border);
+}
+
+.sidebar-link.active svg {
+    color: var(--primary);
+}
+
+
+/* Active red indicator */
+
+.sidebar-link.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -16px;
+
+    width: 3px;
+    height: 22px;
+
+    border-radius: 0 5px 5px 0;
+
+    background: var(--primary);
+}
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+.logout-button {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 13px 14px;
+
+    border: 1px solid transparent;
+
+    border-radius: 11px;
+
+    background: transparent;
+
+    color: var(--secondary);
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.logout-button svg {
+    min-width: 18px;
+
+    font-size: 17px;
+}
+
+.logout-button:hover {
+    color: var(--primary);
+
+    background: var(--primary-soft);
+
+    border-color: var(--primary-border);
+}
+
+
+/* =========================
+   HAMBURGER
+========================= */
+
+.hamburger-button {
+    display: none;
+
+    position: fixed;
+
+    top: 18px;
+    left: 18px;
+
+    z-index: 1100;
+
+    width: 44px;
+    height: 44px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: var(--card-bg);
+
+    color: var(--primary);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.4);
+
+    transition: 0.25s ease;
+}
+
+.hamburger-button:hover {
+    background: var(--primary);
+
+    color: var(--sidebar-bg);
+
+    border-color: var(--primary);
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.sidebar-close {
+    display: none;
+
+    position: absolute;
+
+    top: 20px;
+    right: 16px;
+
+    width: 38px;
+    height: 38px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--primary-border);
+
+    border-radius: 10px;
+
+    background: var(--primary-soft);
+
+    color: var(--primary);
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.sidebar-close:hover {
+    background: var(--primary);
+
+    color: var(--sidebar-bg);
+}
+
+
+/* =========================
+   OVERLAY
+========================= */
+
+.sidebar-overlay {
+    display: none;
+}
+
+
+/* =========================
+   TABLET / MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 250px;
+
+        transform: translateX(-100%);
+
+        transition: transform 0.3s ease;
+
+        box-shadow:
+            10px 0 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+
+
+    /* Hamburger */
+
+    .hamburger-button {
+        display: flex;
+    }
+
+
+    /* Close */
+
+    .sidebar-close {
+        display: flex;
+    }
+
+
+    /* Overlay */
+
+    .sidebar-overlay {
+        display: block;
+
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 999;
+
+        background: rgba(0, 0, 0, 0.65);
+
+        backdrop-filter: blur(3px);
+    }
+
+
+    /* Logo */
+
+    .sidebar-logo {
+        padding-top: 10px;
+        padding-bottom: 35px;
+    }
+
+    .sidebar-logo h2 {
+        font-size: 23px;
+    }
+
+    .sidebar-logo span {
+        display: block;
+    }
+
+
+    /* Links */
+
+    .sidebar-link {
+        justify-content: flex-start;
+
+        padding: 13px 14px;
+    }
+
+    .sidebar-link span {
+        display: block;
+    }
+
+
+    /* Logout */
+
+    .logout-button {
+        justify-content: flex-start;
+    }
+
+    .logout-button span {
+        display: block;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+    .sidebar {
+        width: 235px;
+    }
+
+    .sidebar-link {
+        font-size: 13px;
+    }
+
+    .logout-button {
+        font-size: 13px;
+    }
+
+}
