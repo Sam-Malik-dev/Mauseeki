@@ -137,7 +137,6 @@ function AdminArtists() {
                 !error &&
                 filteredArtists.length === 0 && (
                     <div className="artists-message">
-
                         <div className="message-icon">♪</div>
 
                         <h3>No artists found</h3>
@@ -147,7 +146,6 @@ function AdminArtists() {
                                 ? "Try another search."
                                 : "No artists have been added yet."}
                         </p>
-
                     </div>
                 )}
 
@@ -157,12 +155,10 @@ function AdminArtists() {
                     <div className="artists-grid">
 
                         {filteredArtists.map((item) => (
-
                             <div
                                 className="artist-card"
                                 key={item._id}
                             >
-
                                 <img
                                     src={item.image}
                                     alt={item.artistname}
@@ -171,9 +167,7 @@ function AdminArtists() {
 
                                 <div className="artist-info">
 
-                                    <h2>
-                                        {item.artistname}
-                                    </h2>
+                                    <h2>{item.artistname}</h2>
 
                                     <p>
                                         {item.language ||
@@ -204,7 +198,6 @@ function AdminArtists() {
                                 </button>
 
                             </div>
-
                         ))}
 
                     </div>

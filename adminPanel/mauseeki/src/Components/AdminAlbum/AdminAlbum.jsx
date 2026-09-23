@@ -20,7 +20,9 @@ function AdminAlbum() {
                 const data = await res.json();
 
                 if (!res.ok) {
-                    throw new Error(data.message || "Failed to fetch albums");
+                    throw new Error(
+                        data.message || "Failed to fetch albums"
+                    );
                 }
 
                 setAlbum(data);
@@ -53,7 +55,9 @@ function AdminAlbum() {
             const data = await res.json();
 
             if (!res.ok) {
-                throw new Error(data.message || "Failed to delete album");
+                throw new Error(
+                    data.message || "Failed to delete album"
+                );
             }
 
             setAlbum((prev) =>
@@ -66,15 +70,21 @@ function AdminAlbum() {
     };
 
     const filteredAlbums = album.filter((item) =>
-        item.albumtitle?.toLowerCase().includes(search.toLowerCase())
+        item.albumtitle
+            ?.toLowerCase()
+            .includes(search.toLowerCase())
     );
 
     return (
         <div className="albums-page">
 
+            {/* Header */}
             <div className="albums-header">
+
                 <div>
-                    <p className="albums-label">ADMIN PANEL</p>
+                    <p className="albums-label">
+                        ADMIN PANEL
+                    </p>
 
                     <h1>Albums</h1>
 
@@ -87,83 +97,130 @@ function AdminAlbum() {
                     <span>{album.length}</span>
                     <p>Total Albums</p>
                 </div>
+
             </div>
 
+            {/* Search */}
             <div className="albums-toolbar">
+
                 <div className="album-search">
+
                     <span>⌕</span>
 
                     <input
                         type="text"
                         placeholder="Search albums..."
                         value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={(e) =>
+                            setSearch(e.target.value)
+                        }
                     />
+
                 </div>
 
                 <p className="album-result-count">
                     {filteredAlbums.length} albums found
                 </p>
+
             </div>
 
+            {/* Loading */}
             {loading && (
                 <div className="albums-message">
+
                     <div className="album-loader"></div>
-                    <h3>Loading albums...</h3>
+
+                    <h3>
+                        Loading albums...
+                    </h3>
+
                 </div>
             )}
 
+            {/* Error */}
             {!loading && error && (
                 <div className="albums-message album-error">
-                    <div className="album-message-icon">!</div>
-                    <h3>{error}</h3>
-                    <p>Please check your backend server.</p>
+
+                    <div className="album-message-icon">
+                        !
+                    </div>
+
+                    <h3>
+                        {error}
+                    </h3>
+
+                    <p>
+                        Please check your backend server.
+                    </p>
+
                 </div>
             )}
 
+            {/* No Albums */}
             {!loading &&
                 !error &&
                 filteredAlbums.length === 0 && (
                     <div className="albums-message">
-                        <div className="album-message-icon">♪</div>
 
-                        <h3>No albums found</h3>
+                        <div className="album-message-icon">
+                            ♪
+                        </div>
+
+                        <h3>
+                            No albums found
+                        </h3>
 
                         <p>
                             {search
                                 ? "Try another search."
                                 : "No albums have been added yet."}
                         </p>
+
                     </div>
                 )}
 
+            {/* Albums */}
             {!loading &&
                 !error &&
                 filteredAlbums.length > 0 && (
-                    <div className="albums-grid">
-                        {filteredAlbums.map((item) => (
-                            <div className="album-card" key={item._id}>
 
+                    <div className="albums-grid">
+
+                        {filteredAlbums.map((item) => (
+
+                            <div
+                                className="album-card"
+                                key={item._id}
+                            >
+
+                                {/* Album Image */}
                                 <img
                                     src={item.thumbnail}
                                     alt={item.albumtitle}
                                     className="album-image"
                                 />
 
+                                {/* Album Information */}
                                 <div className="album-info">
 
-                                    <h2>{item.albumtitle}</h2>
+                                    <h2>
+                                        {item.albumtitle}
+                                    </h2>
 
                                     <p>
-                                        Artist:{" "}
+                                        <strong>
+                                            Artist:
+                                        </strong>{" "}
                                         {item.artist?.artistname ||
                                             "Unknown Artist"}
                                     </p>
 
                                     <p>
-                                        Created by:{" "}
+                                        <strong>
+                                            Created by:
+                                        </strong>{" "}
                                         {item.createdBy
-                                            ? `${item.createdBy.firstname} ${item.createdBy.lastname}`
+                                            ? `${item.createdBy.firstname || ""} ${item.createdBy.lastname || ""}`
                                             : "Unknown User"}
                                     </p>
 
@@ -174,17 +231,23 @@ function AdminAlbum() {
 
                                 </div>
 
+                                {/* Delete */}
                                 <button
                                     className="delete-album-button"
-                                    onClick={() => handleDelete(item._id)}
+                                    onClick={() =>
+                                        handleDelete(item._id)
+                                    }
                                 >
                                     Delete Album
                                 </button>
 
                             </div>
+
                         ))}
+
                     </div>
                 )}
+
         </div>
     );
 }

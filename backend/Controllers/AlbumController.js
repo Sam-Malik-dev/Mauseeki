@@ -231,13 +231,22 @@ const showartistalbum = async (req, res) => {
   }
 };
 const showalbum = async (req, res) => {
-  try {
-    const allalbums = await AlbumModel.find().populate("artist", "artistname").populate("createdBy", "firstname lastname");
-    res.status(200).json(allalbums);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Internal server error", success: false });
-  }
+    try {
+        const allalbums = await AlbumModel
+            .find()
+            .populate("artist", "artistname")
+            .populate("createdBy", "firstname lastname");
+
+        res.status(200).json(allalbums);
+
+    } catch (error) {
+        console.log(error);
+
+        res.status(500).json({
+            message: "Internal server error",
+            success: false
+        });
+    }
 };
 
 const randomfive = async (req, res) => {
