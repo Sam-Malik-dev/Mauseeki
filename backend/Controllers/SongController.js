@@ -69,7 +69,7 @@ const addSong = async (req, res) => {
 // show all songs
 const showsong = async (req, res) => {
   try {
-    const songs = await SongModel.find().pupulate("addedby", "firstname lastname")
+    const songs = await SongModel.find().populate("addedby", "firstname lastname")
     
 
     res.status(200).json(songs);
