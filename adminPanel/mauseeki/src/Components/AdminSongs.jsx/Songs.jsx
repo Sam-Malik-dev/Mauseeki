@@ -13,6 +13,7 @@ function Songs() {
         const allsongs = async () => {
             try {
                 setLoading(true);
+                setError("");
 
                 const res = await fetch(
                     "https://mauseeki.onrender.com/Mauseeki/all-songs"
@@ -21,7 +22,7 @@ function Songs() {
                 const data = await res.json();
 
                 if (res.ok) {
-                    setSongs(data);
+                    setSongs(Array.isArray(data) ? data : data.songs || []);
                 } else {
                     setError(data.message || "Failed to fetch songs");
                 }
@@ -90,7 +91,6 @@ function Songs() {
     return (
         <div className="songs-page">
 
-            {/* Header */}
             <div className="songs-header">
                 <div>
                     <p className="songs-label">MUSIC LIBRARY</p>
@@ -108,8 +108,6 @@ function Songs() {
                 </div>
             </div>
 
-
-            {/* Search */}
             <div className="songs-toolbar">
 
                 <div className="search-box">
@@ -129,8 +127,6 @@ function Songs() {
 
             </div>
 
-
-            {/* Loading */}
             {loading && (
                 <div className="songs-message">
 
@@ -141,8 +137,6 @@ function Songs() {
                 </div>
             )}
 
-
-            {/* Error */}
             {!loading && error && (
                 <div className="songs-message error-message">
 
@@ -161,8 +155,6 @@ function Songs() {
                 </div>
             )}
 
-
-            {/* Empty */}
             {!loading && !error && filteredSongs.length === 0 && (
                 <div className="songs-message">
 
@@ -183,14 +175,11 @@ function Songs() {
                 </div>
             )}
 
-
-            {/* Songs */}
             {!loading && !error && filteredSongs.length > 0 && (
                 <div className="songs-table-wrapper">
 
                     <div className="songs-table">
 
-                        {/* Header */}
                         <div className="song-row song-table-header">
 
                             <div>#</div>
@@ -211,8 +200,6 @@ function Songs() {
 
                         </div>
 
-
-                        {/* Songs */}
                         {filteredSongs.map((song, index) => (
 
                             <div
@@ -220,13 +207,10 @@ function Songs() {
                                 key={song._id || index}
                             >
 
-                                {/* Number */}
                                 <div className="song-number">
                                     {String(index + 1).padStart(2, "0")}
                                 </div>
 
-
-                                {/* Song */}
                                 <div className="song-main">
 
                                     <img
@@ -249,8 +233,6 @@ function Songs() {
 
                                 </div>
 
-
-                                {/* Artist */}
                                 <div className="song-artist">
 
                                     {song.artist?.artistname ||
@@ -259,8 +241,6 @@ function Songs() {
 
                                 </div>
 
-
-                                {/* Album */}
                                 <div className="song-album">
 
                                     {song.album?.albumtitle ||
@@ -269,8 +249,6 @@ function Songs() {
 
                                 </div>
 
-
-                                {/* Language */}
                                 <div>
 
                                     <span className="language-badge">
@@ -279,24 +257,18 @@ function Songs() {
 
                                 </div>
 
-
-                                {/* Genre */}
                                 <div className="song-genre">
 
                                     {song.genre || "N/A"}
 
                                 </div>
 
-
-                                {/* Year */}
                                 <div className="song-year">
 
                                     {song.releaseYear || "—"}
 
                                 </div>
 
-
-                                {/* Delete */}
                                 <div className="song-action">
 
                                     <button

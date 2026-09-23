@@ -169,7 +169,7 @@ const deleteSong = async (req, res) =>{
 };
 const allusers = async (req, res) =>{
     try {
-        const users = await UserModel.find();
+        const users = await UserModel.find()
         res.status(200).json(users);
     } catch (error) {
         console.log(error);
