@@ -69,8 +69,8 @@ const addSong = async (req, res) => {
 // show all songs
 const showsong = async (req, res) => {
   try {
-    const songs = await SongModel.aggregate([{ $sample: { size: await SongModel.countDocuments() } }])
-     .populate("addedby", "firstname lastname ");
+    const songs = await SongModel.find().pupulate("addedby", "firstname lastname")
+    
 
     res.status(200).json(songs);
   } catch (error) {

@@ -18,7 +18,6 @@ function Songs() {
                 setError("");
 
                 const res = await fetch(`${API}/all-songs`);
-
                 const data = await res.json();
 
                 if (!res.ok) {
@@ -27,10 +26,13 @@ function Songs() {
                     );
                 }
 
-                setSongs(data);
+                setSongs(Array.isArray(data) ? data : []);
+
             } catch (error) {
                 console.log("Fetch Songs Error:", error);
-                setError(error.message || "Unable to connect to server");
+                setError(
+                    error.message || "Unable to connect to server"
+                );
             } finally {
                 setLoading(false);
             }
@@ -65,14 +67,22 @@ function Songs() {
             }
 
             setSongs((prevSongs) =>
-                prevSongs.filter((song) => song._id !== songId)
+                prevSongs.filter(
+                    (song) => song._id !== songId
+                )
             );
 
-            alert(data.message || "Song deleted successfully");
+            alert(
+                data.message ||
+                    "Song deleted successfully"
+            );
 
         } catch (error) {
             console.log("Delete Error:", error);
-            alert(error.message || "Unable to delete song");
+            alert(
+                error.message ||
+                    "Unable to delete song"
+            );
         } finally {
             setDeletingId(null);
         }
@@ -81,13 +91,29 @@ function Songs() {
     const filteredSongs = songs.filter((song) => {
         const searchText = search.toLowerCase();
 
+        const title =
+            song.title?.toLowerCase() || "";
+
+        const language =
+            song.language?.toLowerCase() || "";
+
+        const genre =
+            song.genre?.toLowerCase() || "";
+
+        const category =
+            song.category?.toLowerCase() || "";
+
+        const createdBy =
+            `${song.addedby?.firstname || ""} ${
+                song.addedby?.lastname || ""
+            }`.toLowerCase();
+
         return (
-            song.title?.toLowerCase().includes(searchText) ||
-            song.language?.toLowerCase().includes(searchText) ||
-            song.genre?.toLowerCase().includes(searchText) ||
-            song.category?.toLowerCase().includes(searchText) ||
-            song.artist?.artistname?.toLowerCase().includes(searchText) ||
-            song.album?.albumtitle?.toLowerCase().includes(searchText)
+            title.includes(searchText) ||
+            language.includes(searchText) ||
+            genre.includes(searchText) ||
+            category.includes(searchText) ||
+            createdBy.includes(searchText)
         );
     });
 
@@ -126,7 +152,7 @@ function Songs() {
 
                     <input
                         type="text"
-                        placeholder="Search songs, artists, albums..."
+                        placeholder="Search songs..."
                         value={search}
                         onChange={(e) =>
                             setSearch(e.target.value)
@@ -211,120 +237,153 @@ function Songs() {
                             <div className="song-row song-table-header">
 
                                 <div>#</div>
+
                                 <div>Song</div>
-                                <div>Artist</div>
-                                <div>Album</div>
+
                                 <div>Language</div>
+
                                 <div>Genre</div>
+
+                                <div>Category</div>
+
                                 <div>Year</div>
+
+                                <div>Created By</div>
+
                                 <div>Action</div>
 
                             </div>
 
 
-                            {/* Songs */}
-                            {filteredSongs.map((song, index) => (
+                            {/* Rows */}
+                            {filteredSongs.map(
+                                (song, index) => (
 
-                                <div
-                                    className="song-row"
-                                    key={song._id || index}
-                                >
+                                    <div
+                                        className="song-row"
+                                        key={
+                                            song._id ||
+                                            index
+                                        }
+                                    >
 
-                                    {/* Number */}
-                                    <div className="song-number">
-                                        {String(index + 1).padStart(2, "0")}
-                                    </div>
+                                        {/* Number */}
+                                        <div className="song-number">
+                                            {String(
+                                                index + 1
+                                            ).padStart(
+                                                2,
+                                                "0"
+                                            )}
+                                        </div>
 
 
-                                    {/* Song */}
-                                    <div className="song-main">
+                                        {/* Song */}
+                                        <div className="song-main">
 
-                                        <img
-                                            src={song.coverImage}
-                                            alt={song.title}
-                                            className="song-cover"
-                                        />
+                                            <img
+                                                src={
+                                                    song.coverImage
+                                                }
+                                                alt={
+                                                    song.title
+                                                }
+                                                className="song-cover"
+                                            />
 
-                                        <div className="song-info">
+                                            <div className="song-info">
 
-                                            <h3>
-                                                {song.title ||
-                                                    "Unknown Song"}
-                                            </h3>
+                                                <h3>
+                                                    {song.title ||
+                                                        "Unknown Song"}
+                                                </h3>
 
-                                            <p>
-                                                {song.category ||
-                                                    "Music"}
-                                            </p>
+                                                <p>
+                                                    {song.category ||
+                                                        "Music"}
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        {/* Language */}
+                                        <div>
+
+                                            <span className="language-badge">
+                                                {song.language ||
+                                                    "N/A"}
+                                            </span>
+
+                                        </div>
+
+
+                                        {/* Genre */}
+                                        <div className="song-genre">
+                                            {song.genre ||
+                                                "N/A"}
+                                        </div>
+
+
+                                        {/* Category */}
+                                        <div>
+                                            {song.category ||
+                                                "Music"}
+                                        </div>
+
+
+                                        {/* Year */}
+                                        <div className="song-year">
+                                            {song.releaseYear ||
+                                                "—"}
+                                        </div>
+
+
+                                        {/* Created By */}
+                                        <div className="song-artist">
+
+                                            {song.addedby
+                                                ? `${song.addedby.firstname || ""} ${
+                                                      song.addedby.lastname || ""
+                                                  }`
+                                                : "Unknown User"}
+
+                                        </div>
+
+
+                                        {/* Delete */}
+                                        <div className="song-action">
+
+                                            <button
+                                                className="delete-song-button"
+                                                onClick={() =>
+                                                    handleDelete(
+                                                        song._id
+                                                    )
+                                                }
+                                                disabled={
+                                                    deletingId ===
+                                                    song._id
+                                                }
+                                                title="Delete song"
+                                            >
+
+                                                {deletingId ===
+                                                song._id ? (
+                                                    <span className="delete-loader"></span>
+                                                ) : (
+                                                    <FaTrash />
+                                                )}
+
+                                            </button>
 
                                         </div>
 
                                     </div>
 
-
-                                    {/* Artist */}
-                                    <div className="song-artist">
-                                        {song.artist?.artistname ||
-                                            song.artistname ||
-                                            "Unknown Artist"}
-                                    </div>
-
-
-                                    {/* Album */}
-                                    <div className="song-album">
-                                        {song.album?.albumtitle ||
-                                            song.albumtitle ||
-                                            "Single"}
-                                    </div>
-
-
-                                    {/* Language */}
-                                    <div>
-                                        <span className="language-badge">
-                                            {song.language || "N/A"}
-                                        </span>
-                                    </div>
-
-
-                                    {/* Genre */}
-                                    <div className="song-genre">
-                                        {song.genre || "N/A"}
-                                    </div>
-
-
-                                    {/* Year */}
-                                    <div className="song-year">
-                                        {song.releaseYear || "—"}
-                                    </div>
-
-
-                                    {/* Delete */}
-                                    <div className="song-action">
-
-                                        <button
-                                            className="delete-song-button"
-                                            onClick={() =>
-                                                handleDelete(song._id)
-                                            }
-                                            disabled={
-                                                deletingId === song._id
-                                            }
-                                            title="Delete song"
-                                        >
-
-                                            {deletingId === song._id ? (
-                                                <span className="delete-loader"></span>
-                                            ) : (
-                                                <FaTrash />
-                                            )}
-
-                                        </button>
-
-                                    </div>
-
-                                </div>
-
-                            ))}
+                                )
+                            )}
 
                         </div>
 
