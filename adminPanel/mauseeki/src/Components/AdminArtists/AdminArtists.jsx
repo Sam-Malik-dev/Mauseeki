@@ -13,10 +13,10 @@ function AdminArtists() {
                 setLoading(true);
                 setError("");
 
-                const url =
-                    "https://mauseeki.onrender.com/Mauseeki/all-artist";
+                const res = await fetch(
+                    "https://mauseeki.onrender.com/Mauseeki/all-artist"
+                );
 
-                const res = await fetch(url);
                 const data = await res.json();
 
                 if (!res.ok) {
@@ -63,7 +63,6 @@ function AdminArtists() {
             setArtist((prev) =>
                 prev.filter((item) => item._id !== id)
             );
-
         } catch (error) {
             console.log(error);
             alert("Unable to delete artist");
@@ -79,13 +78,9 @@ function AdminArtists() {
     return (
         <div className="artists-page">
 
-            {/* Header */}
             <div className="artists-header">
-
                 <div>
-                    <p className="artists-label">
-                        ADMIN PANEL
-                    </p>
+                    <p className="artists-label">ADMIN PANEL</p>
 
                     <h1>Artists</h1>
 
@@ -98,14 +93,11 @@ function AdminArtists() {
                     <span>{artist.length}</span>
                     <p>Total Artists</p>
                 </div>
-
             </div>
 
-            {/* Toolbar */}
             <div className="artists-toolbar">
 
                 <div className="artist-search">
-
                     <span>⌕</span>
 
                     <input
@@ -116,7 +108,6 @@ function AdminArtists() {
                             setSearch(e.target.value)
                         }
                     />
-
                 </div>
 
                 <p className="result-count">
@@ -125,43 +116,29 @@ function AdminArtists() {
 
             </div>
 
-            {/* Loading */}
             {loading && (
                 <div className="artists-message">
-
                     <div className="loader"></div>
-
                     <h3>Loading artists...</h3>
-
                 </div>
             )}
 
-            {/* Error */}
             {!loading && error && (
                 <div className="artists-message error-message">
-
-                    <div className="message-icon">
-                        !
-                    </div>
+                    <div className="message-icon">!</div>
 
                     <h3>{error}</h3>
 
-                    <p>
-                        Please check your backend server.
-                    </p>
-
+                    <p>Please check your backend server.</p>
                 </div>
             )}
 
-            {/* Empty */}
             {!loading &&
                 !error &&
                 filteredArtists.length === 0 && (
                     <div className="artists-message">
 
-                        <div className="message-icon">
-                            ♪
-                        </div>
+                        <div className="message-icon">♪</div>
 
                         <h3>No artists found</h3>
 
@@ -174,7 +151,6 @@ function AdminArtists() {
                     </div>
                 )}
 
-            {/* Artists */}
             {!loading &&
                 !error &&
                 filteredArtists.length > 0 && (
@@ -208,6 +184,13 @@ function AdminArtists() {
                                         {item.region ||
                                             "Unknown Region"}
                                     </span>
+
+                                    <p>
+                                        Created by:{" "}
+                                        {item.createdBy
+                                            ? `${item.createdBy.firstname} ${item.createdBy.lastname}`
+                                            : "Unknown User"}
+                                    </p>
 
                                 </div>
 

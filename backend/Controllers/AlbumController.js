@@ -232,7 +232,7 @@ const showartistalbum = async (req, res) => {
 };
 const showalbum = async (req, res) => {
   try {
-    const allalbums = await AlbumModel.find().populate("artist", "artistname");
+    const allalbums = await AlbumModel.find().populate("artist", "artistname").populate("createdBy", "firstname lastname");
     res.status(200).json(allalbums);
   } catch (error) {
     console.log(error);

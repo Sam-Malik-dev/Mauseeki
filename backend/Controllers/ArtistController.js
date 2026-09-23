@@ -93,14 +93,13 @@ const addArtist = async (req, res) => {
 
 const showArtists = async (req, res)=>{
     try {
-        const allartists = await ArtistModel.find();
+        const allartists = await ArtistModel.find().populate("createdBy", "firstname lastname");
         res.status(200).json(allartists);
     } catch (error) {
         console.log(error);
         res.status(500).json({message: "Internal server error...", success:false});
     }
 };
-
 
 const yourArtists = async (req, res)=>{
     try {

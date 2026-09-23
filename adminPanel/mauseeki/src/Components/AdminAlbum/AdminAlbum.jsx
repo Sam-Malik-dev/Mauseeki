@@ -13,16 +13,14 @@ function AdminAlbum() {
                 setLoading(true);
                 setError("");
 
-                const url =
-                    "https://mauseeki.onrender.com/Mauseeki/all-album";
+                const res = await fetch(
+                    "https://mauseeki.onrender.com/Mauseeki/all-album"
+                );
 
-                const res = await fetch(url);
                 const data = await res.json();
 
                 if (!res.ok) {
-                    throw new Error(
-                        data.message || "Failed to fetch albums"
-                    );
+                    throw new Error(data.message || "Failed to fetch albums");
                 }
 
                 setAlbum(data);
@@ -55,9 +53,7 @@ function AdminAlbum() {
             const data = await res.json();
 
             if (!res.ok) {
-                throw new Error(
-                    data.message || "Failed to delete album"
-                );
+                throw new Error(data.message || "Failed to delete album");
             }
 
             setAlbum((prev) =>
@@ -70,9 +66,7 @@ function AdminAlbum() {
     };
 
     const filteredAlbums = album.filter((item) =>
-        item.albumtitle
-            ?.toLowerCase()
-            .includes(search.toLowerCase())
+        item.albumtitle?.toLowerCase().includes(search.toLowerCase())
     );
 
     return (
@@ -103,9 +97,7 @@ function AdminAlbum() {
                         type="text"
                         placeholder="Search albums..."
                         value={search}
-                        onChange={(e) =>
-                            setSearch(e.target.value)
-                        }
+                        onChange={(e) => setSearch(e.target.value)}
                     />
                 </div>
 
@@ -124,12 +116,8 @@ function AdminAlbum() {
             {!loading && error && (
                 <div className="albums-message album-error">
                     <div className="album-message-icon">!</div>
-
                     <h3>{error}</h3>
-
-                    <p>
-                        Please check your backend server.
-                    </p>
+                    <p>Please check your backend server.</p>
                 </div>
             )}
 
@@ -137,9 +125,7 @@ function AdminAlbum() {
                 !error &&
                 filteredAlbums.length === 0 && (
                     <div className="albums-message">
-                        <div className="album-message-icon">
-                            ♪
-                        </div>
+                        <div className="album-message-icon">♪</div>
 
                         <h3>No albums found</h3>
 
@@ -156,10 +142,8 @@ function AdminAlbum() {
                 filteredAlbums.length > 0 && (
                     <div className="albums-grid">
                         {filteredAlbums.map((item) => (
-                            <div
-                                className="album-card"
-                                key={item._id}
-                            >
+                            <div className="album-card" key={item._id}>
+
                                 <img
                                     src={item.thumbnail}
                                     alt={item.albumtitle}
@@ -167,30 +151,36 @@ function AdminAlbum() {
                                 />
 
                                 <div className="album-info">
-                                    <h2>
-                                        {item.albumtitle}
-                                    </h2>
+
+                                    <h2>{item.albumtitle}</h2>
 
                                     <p>
+                                        Artist:{" "}
                                         {item.artist?.artistname ||
-                                            item.artist?.name ||
                                             "Unknown Artist"}
+                                    </p>
+
+                                    <p>
+                                        Created by:{" "}
+                                        {item.createdBy
+                                            ? `${item.createdBy.firstname} ${item.createdBy.lastname}`
+                                            : "Unknown User"}
                                     </p>
 
                                     <span>
                                         {item.description ||
                                             "No description available"}
                                     </span>
+
                                 </div>
 
                                 <button
                                     className="delete-album-button"
-                                    onClick={() =>
-                                        handleDelete(item._id)
-                                    }
+                                    onClick={() => handleDelete(item._id)}
                                 >
                                     Delete Album
                                 </button>
+
                             </div>
                         ))}
                     </div>
