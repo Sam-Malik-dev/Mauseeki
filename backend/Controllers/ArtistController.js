@@ -93,7 +93,7 @@ const addArtist = async (req, res) => {
 
 const showArtists = async (req, res)=>{
     try {
-        const allartists = await ArtistModel.find().populate("createdBy", "firstname lastname");
+        const allartists = await ArtistModel.find();
         res.status(200).json(allartists);
     } catch (error) {
         console.log(error);
