@@ -4,8 +4,8 @@ require("./Models/DB");
 
 const cors = require("cors");
 
-const Userrouter = require("./Routers/UserRouter");
-const Songrouter = require("./Routers/SongRouter");
+const Userrouter = require("./Routers/UserRouters");
+const Songrouter = require("./Routers/SongsRouter");
 const Artistrouter = require("./Routers/ArtistRouter");
 const AlbumRouter = require("./Routers/AlbumRouter");
 const LikeRouter = require("./Routers/LikeRouter");
